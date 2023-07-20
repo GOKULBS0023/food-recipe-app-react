@@ -1,0 +1,15 @@
+.main__section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    margin: auto;
+}
+.form-signin{
+    text-align: center;
+}
+
+.form-signin .form-control {
+  box-shadow: none;
+}

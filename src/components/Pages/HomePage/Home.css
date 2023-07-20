@@ -6,13 +6,18 @@
     gap: 2rem;
     width: 80vw;
     margin:auto;
+    position: relative;
   }
   .heading {
     font-size: 4.2rem;
     font-family: "Lumanosimo", cursive;
     letter-spacing: 1.3px;
   }
-  
+  .auth-btn{
+    color: #000;
+    padding: .5rem 1rem;
+    font-size: 1.6rem;
+  }
   .search__enable-btn{
       font-size: 3rem;
       color: #1F8A70;
