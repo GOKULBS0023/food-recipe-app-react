@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { api_id, api_key } from "../../../API_KEYS/key";
+// import { api_id, api_key } from "../../../API_KEYS/key";
 import Axios from "axios";
 import "./Home.css";
 import QueryForm from "./QueryForm/QueryForm";
 import MealType from "./MealType/MealType";
 import DisplayRecipes from "./DisplayRecipes/DisplayRecipes";
-
+const api_id = "b79f289e";
+const api_key = "ff269a182fda78059c97241110424e6d";
 const Home = () => {
   const [mealType, setMealType] = useState("all");
   const [query, setQuery] = useState("Banana");
