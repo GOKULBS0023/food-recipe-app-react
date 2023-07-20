@@ -1,0 +1,43 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 2rem;
+    width: 80vw;
+    margin:auto;
+  }
+  .heading {
+    font-size: 4.2rem;
+    font-family: "Lumanosimo", cursive;
+    letter-spacing: 1.3px;
+  }
+  
+  .search__enable-btn{
+      font-size: 3rem;
+      color: #1F8A70;
+      cursor: pointer;
+      transition: 2s;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .home {
+      padding: 3rem 1.5rem;
+      width: 90vw;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .home {
+      width: 95vw;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .home {
+      width: 98vw;
+    }
+    .heading {
+      font-size: 3.6rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+  }

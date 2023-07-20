@@ -1,0 +1,26 @@
+.search__btn{
+    padding: 1.3rem 3rem;
+    border: 1px solid transparent;
+    background-color: #257d4e;
+    cursor: pointer;
+}
+.search__icon{
+    color: #eee;
+    font-size: 1.8rem;
+}
+@media screen and (max-width: 700px) {
+    .search__btn{
+        padding: 1.2rem 2.8rem;
+    }
+    .search__icon{
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .search__btn{
+        padding: 1rem 2rem;
+    }
+    .search__icon{
+        font-size: 1.6rem;
+    }
+}

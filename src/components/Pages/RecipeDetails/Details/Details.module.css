@@ -1,0 +1,121 @@
+.container {
+  margin-top: 3rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-gap: 3rem;
+}
+.recipe__image-box {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.recipe__image-box img {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+.recipe__content-box {
+  padding-left: 3rem;
+  display: grid;
+  > h2 {
+    font-size: 4.8rem;
+    letter-spacing: 1.8px;
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 5rem;
+    > .source {
+      display: inline-block;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      font-style: normal;
+    }
+  }
+}
+.calories {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+.cal-wg {
+  display: flex;
+  justify-content: space-between;
+}
+.other__data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.list {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.items {
+  font-size: 1.8rem;
+  list-style: circle;
+}
+.recipe__ingredient {
+  margin: auto;
+  margin-top: 2rem;
+  width: 100%;
+  grid-column: 1/-1;
+}
+@media screen and (max-width: 900px) {
+  .container {
+    margin-top: 2rem;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+  }
+  .recipe__content-box {
+    padding-left: 1rem;
+    > h2 {
+      text-align: center;
+      font-size: 3.6rem;
+      letter-spacing: 1.5px;
+      > .source {
+        display: inline-block;
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        font-style: normal;
+      }
+    }
+  }
+  .calories {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .list {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .items {
+    font-size: 1.6rem;
+    list-style: circle;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+  .cal-wg {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    padding-bottom: 3rem;
+  }
+  .recipe__image-box {
+    width: 300px;
+    height:300px;
+    margin: auto;
+    grid-row-start: 2;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 600px) {
+
+}

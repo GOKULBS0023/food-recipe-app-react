@@ -1,0 +1,18 @@
+.query-from{
+    transition: .5s;
+    display: flex;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 600px) {
+    .query-from{
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 400px) {
+    .query-from{
+        grid-gap: 1rem;
+        grid-template-columns: 1fr;
+    }
+}
