@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 // import { api_id, api_key } from "../../../API_KEYS/key";
 import Axios from "axios";
 import "./Home.css";
@@ -20,26 +20,18 @@ const Home = () => {
     setQuery(e.target.value);
   };
 
-  const submitButtonHandler = useCallback(
-    async (e) => {
-      if (e) {
-        e.preventDefault();
-      }
-      var url = `https://api.edamam.com/search?q=${query}&app_id=${api_id}&app_key=${api_key}&from=0&to=10&health=${healthLabel}&diet=${dietValue}`;
-      var result = await Axios.get(url);
-      setRecipes(result.data.hits);
-    },
-    [healthLabel, dietValue, query]
-  );
+  const submitButtonHandler = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    var url = `https://api.edamam.com/search?q=${query}&app_id=${api_id}&app_key=${api_key}&from=0&to=10&health=${healthLabel}&diet=${dietValue}`;
+    var result = await Axios.get(url);
+    setRecipes(result.data.hits);
+  };
 
   useEffect(() => {
-    const fetchRecipes = async () => {
-      await submitButtonHandler();
-    };
-
-    fetchRecipes();
-  }, [healthLabel, dietValue, query, submitButtonHandler]);
-
+    submitButtonHandler();
+  }, [healthLabel, dietValue, query]);
   return (
     <div className="home">
       <h1 className="heading">Food Recipes</h1>
