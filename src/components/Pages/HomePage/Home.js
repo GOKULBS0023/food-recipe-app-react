@@ -33,9 +33,10 @@ const Home = () => {
     const fetchRecipes = async () => {
       await submitButtonHandler();
     };
-
+  
     fetchRecipes();
-  }, [healthLabel, dietValue, query]);
+  }, [healthLabel, dietValue, query, submitButtonHandler]); 
+  
 
   return (
     <div className="home">
