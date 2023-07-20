@@ -20,23 +20,25 @@ const Home = () => {
     setQuery(e.target.value);
   };
 
-  const submitButtonHandler = async (e) => {
-    if (e) {
-      e.preventDefault();
-    }
-    var url = `https://api.edamam.com/search?q=${query}&app_id=${api_id}&app_key=${api_key}&from=0&to=10&health=${healthLabel}&diet=${dietValue}`;
-    var result = await Axios.get(url);
-    setRecipes(result.data.hits);
-  };
+  const submitButtonHandler = useCallback(
+    async (e) => {
+      if (e) {
+        e.preventDefault();
+      }
+      var url = `https://api.edamam.com/search?q=${query}&app_id=${api_id}&app_key=${api_key}&from=0&to=10&health=${healthLabel}&diet=${dietValue}`;
+      var result = await Axios.get(url);
+      setRecipes(result.data.hits);
+    },
+    [healthLabel, dietValue, query]
+  );
 
   useEffect(() => {
     const fetchRecipes = async () => {
       await submitButtonHandler();
     };
-  
+
     fetchRecipes();
-  }, [healthLabel, dietValue, query, submitButtonHandler]); 
-  
+  }, [healthLabel, dietValue, query, submitButtonHandler]);
 
   return (
     <div className="home">
