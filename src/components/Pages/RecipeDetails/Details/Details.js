@@ -12,7 +12,7 @@ const Details = (props) => {
       <div className={Styles["recipe__content-box"]}>
         <h2>
           {recipe.label}{" "}
-          <a className={Styles["source"]} href={recipe.url} target="_blank">
+          <a className={Styles["source"]} href={recipe.url} target="_blank" rel="noreferrer" >
             <blockquote>{recipe.source} (get full recipe)</blockquote>
           </a>
         </h2>

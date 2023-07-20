@@ -30,8 +30,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    submitButtonHandler();
+    const fetchRecipes = async () => {
+      await submitButtonHandler();
+    };
+
+    fetchRecipes();
   }, [healthLabel, dietValue, query]);
+
   return (
     <div className="home">
       <h1 className="heading">Food Recipes</h1>

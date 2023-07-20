@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "./Input/Input";
 import SearchButton from "./SearchButton/SearchButton";
 import Dropdown from "./HealthDropdown/HealthDropdown";
