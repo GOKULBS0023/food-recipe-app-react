@@ -41,6 +41,7 @@ const Home = () => {
   useEffect(() => {
     submitButtonHandler();
   }, [submitButtonHandler]);
+
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
