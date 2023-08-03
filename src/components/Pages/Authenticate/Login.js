@@ -1,25 +1,18 @@
-import React, { useState, useContext } from "react";
-import AuthContext from './AuthContext';
+import React, { useState } from "react";
+// import AuthContext from './AuthContext';
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
+// import { initializeApp } from "firebase/app";
 import { Link } from "react-router-dom";
 import "./Style.css";
-const firebaseConfig = {
-  apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
-  authDomain: "food-recipe-finder-app.firebaseapp.com",
-  projectId: "food-recipe-finder-app",
-  storageBucket: "food-recipe-finder-app.appspot.com",
-  messagingSenderId: "508506645594",
-  appId: "1:508506645594:web:e9b129a5df7ac9a6dc6463",
-};
-const app = initializeApp(firebaseConfig);
+// cl
+// const app = initializeApp(firebaseConfig);
 const Login = () => {
   const navigate = useNavigate();
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const user = useContext(AuthContext);
+  // const user = useContext(AuthContext);
   const emailChangeHandler = (e) => {
     setEmailInput(e.target.value);
   };
