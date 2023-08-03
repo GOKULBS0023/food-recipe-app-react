@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../Authenticate/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
@@ -29,18 +29,18 @@ const Home = () => {
     setQuery(e.target.value);
   };
 
-  const submitButtonHandler = useCallback(async (e) => {
+  const submitButtonHandler = async (e) => {
     if (e) {
       e.preventDefault();
     }
     var url = `https://api.edamam.com/search?q=${query}&app_id=${api_id}&app_key=${api_key}&from=0&to=10&health=${healthLabel}&diet=${dietValue}`;
     var result = await Axios.get(url);
     setRecipes(result.data.hits);
-  }, [query, healthLabel, dietValue]);
+  };
 
   useEffect(() => {
     submitButtonHandler();
-  }, [submitButtonHandler]);
+  }, [healthLabel, dietValue, query]);
 
   const handleLogout = () => {
     signOut(auth)

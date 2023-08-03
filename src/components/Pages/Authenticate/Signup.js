@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Style.css";
 import { Link } from "react-router-dom";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
-//   authDomain: "food-recipe-finder-app.firebaseapp.com",
-//   projectId: "food-recipe-finder-app",
-//   storageBucket: "food-recipe-finder-app.appspot.com",
-//   messagingSenderId: "508506645594",
-//   appId: "1:508506645594:web:e9b129a5df7ac9a6dc6463",
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
+  authDomain: "food-recipe-finder-app.firebaseapp.com",
+  projectId: "food-recipe-finder-app",
+  storageBucket: "food-recipe-finder-app.appspot.com",
+  messagingSenderId: "508506645594",
+  appId: "1:508506645594:web:e9b129a5df7ac9a6dc6463",
+};
 
-// const app = initializeApp(firebaseConfig);
-// const database = getDatabase();
+const app = initializeApp(firebaseConfig);
+const database = getDatabase();
 const Signup = () => {
   const navigate = useNavigate();
   const [usernameInput, setUsernameInput] = useState("");
