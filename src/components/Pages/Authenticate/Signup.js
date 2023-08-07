@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Style.css";
 import { Link } from "react-router-dom";
+
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
 
 const firebaseConfig = {
   apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
@@ -25,7 +33,20 @@ const Signup = () => {
   const [passwordInput, setPasswordInput] = useState("");
   const auth = getAuth();
   const db = getDatabase();
-
+  const handleGoogleSignin = (e) => {
+    e.preventDefault();
+    signInWithPopup(auth, provider)
+      .then(() => {
+        localStorage.setItem("isSignedIn", true);
+        setInterval(() => {
+          localStorage.removeItem("isSignedIn");
+        }, 3600000);
+        navigate("/");
+      })
+      .catch((error) => {
+        alert("User details not found!");
+      });
+  };
   const usernameChangeHandler = (e) => {
     setUsernameInput(e.target.value);
   };
@@ -99,10 +120,17 @@ const Signup = () => {
           <button className="btn btn-primary w-100 py-2" type="submit">
             Sign up
           </button>
-          <p className="mt-5 mb-3 text-body-secondary">
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
         </form>
+        <button
+          className="btn btn-primary w-100 py-2 mt-5"
+          type="submit"
+          onClick={handleGoogleSignin}
+        >
+          Sign up using Google
+        </button>
+        <p className="mt-5 mb-3 text-body-secondary">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </main>
     </div>
   );
