@@ -1,61 +1,51 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Style.css";
 import { Link } from "react-router-dom";
 
-const provider = new GoogleAuthProvider();
-const auth = getAuth();
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
+//   authDomain: "food-recipe-finder-app.firebaseapp.com",
+//   projectId: "food-recipe-finder-app",
+//   storageBucket: "food-recipe-finder-app.appspot.com",
+//   messagingSenderId: "508506645594",
+//   appId: "1:508506645594:web:e9b129a5df7ac9a6dc6463",
+// };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBR-HIYLcfO6zOhgkKudrXaPp3ymf5xcM0",
-  authDomain: "food-recipe-finder-app.firebaseapp.com",
-  projectId: "food-recipe-finder-app",
-  storageBucket: "food-recipe-finder-app.appspot.com",
-  messagingSenderId: "508506645594",
-  appId: "1:508506645594:web:e9b129a5df7ac9a6dc6463",
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase();
 const Signup = () => {
-  const navigate = useNavigate();
   const [usernameInput, setUsernameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const navigate = useNavigate();
   const auth = getAuth();
   const db = getDatabase();
+
   const handleGoogleSignin = (e) => {
     e.preventDefault();
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, new GoogleAuthProvider())
       .then(() => {
-        localStorage.setItem("isSignedIn", true);
-        setInterval(() => {
-          localStorage.removeItem("isSignedIn");
-        }, 3600000);
         navigate("/");
       })
       .catch((error) => {
         alert("User details not found!");
       });
   };
+
   const usernameChangeHandler = (e) => {
     setUsernameInput(e.target.value);
   };
+
   const emailChangeHandler = (e) => {
     setEmailInput(e.target.value);
   };
+
   const passwordChangeHandler = (e) => {
     setPasswordInput(e.target.value);
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -70,7 +60,7 @@ const Signup = () => {
           createdAt: new Date().toISOString(),
         });
         alert("You are successfully registered!");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         alert("Something went wrong! Kindly try again...");
@@ -88,7 +78,7 @@ const Signup = () => {
               type="text"
               className="form-control"
               id="usernameInput"
-              placeholder="name@example.com"
+              placeholder="Username"
               onChange={usernameChangeHandler}
               value={usernameInput}
             />

@@ -1,56 +1,47 @@
+// Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
 import "./Style.css";
+import app from "../../../Config/firebase"; 
 
-const provider = new GoogleAuthProvider();
-const auth = getAuth();
 const Login = () => {
+  const auth = getAuth(app); 
   const navigate = useNavigate();
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+
+  const handleGoogleSignin = (e) => {
+    e.preventDefault();
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        alert("User details not found!");
+      });
+  };
+
   const emailChangeHandler = (e) => {
     setEmailInput(e.target.value);
   };
+
   const passwordChangeHandler = (e) => {
     setPasswordInput(e.target.value);
   };
-  const handleGoogleSignin = (e) => {
-    e.preventDefault();
-    signInWithPopup(auth, provider)
-      .then(() => {
-        localStorage.setItem("isSignedIn", true);
-        setInterval(() => {
-          localStorage.removeItem("isSignedIn");
-        }, 3600000);
-        navigate("/");
-      })
-      .catch((error) => {
-        alert("User details not found!");
-      });
-  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, emailInput, passwordInput)
       .then((userCredential) => {
-        localStorage.setItem("isSignedIn", true);
-        setInterval(() => {
-          localStorage.removeItem("isSignedIn");
-        }, 3600000);
         navigate("/");
       })
       .catch((error) => {
         alert("User details not found!");
       });
   };
+
   return (
     <div className="main__section">
       <main className="form-signin w-25 m-auto">
@@ -83,11 +74,7 @@ const Login = () => {
             Sign in
           </button>
         </form>
-        <button
-          className="btn btn-primary w-100 py-2 mt-5"
-          type="submit"
-          onClick={handleGoogleSignin}
-        >
+        <button className="btn btn-primary w-100 py-2 mt-5" type="submit" onClick={handleGoogleSignin}>
           Sign in using Google
         </button>
         <p className="mt-5 mb-3 text-body-secondary">
