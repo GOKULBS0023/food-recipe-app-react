@@ -57,9 +57,14 @@ const Home = () => {
     <div className="home">
       <h1 className="heading">Food Recipes</h1>
       {user ? (
-        <button onClick={handleLogout} className="auth-btn">
-          Log Out
-        </button>
+        <div style={{ display: "flex", gap: "2rem" }}>
+          <button onClick={handleLogout} className="auth-btn">
+            Log Out
+          </button>
+          <Link to={"/user"}>
+            <button className="auth-btn">User</button>
+          </Link>
+        </div>
       ) : (
         <Link to={"/login"}>
           <button className="auth-btn">Login</button>

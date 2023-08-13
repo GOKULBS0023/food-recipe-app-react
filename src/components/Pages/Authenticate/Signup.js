@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Style.css";
 import { Link } from "react-router-dom";
@@ -26,7 +31,20 @@ const Signup = () => {
   const handleGoogleSignin = (e) => {
     e.preventDefault();
     signInWithPopup(auth, new GoogleAuthProvider())
-      .then(() => {
+      .then((userDetail) => {
+        const userID = userDetail.user.uid;
+        const userRef = ref(db, "users/" + auth.currentUser["uid"]);
+        onValue(userRef, (snapshot) => {
+          const userData = snapshot.val();
+
+          !userData &&
+            set(ref(db, "users/" + userID), {
+              userID: userID,
+              username: userDetail.user.displayName,
+              email: userDetail.user.email,
+              createdAt: new Date().toISOString(),
+            });
+        });
         navigate("/");
       })
       .catch((error) => {

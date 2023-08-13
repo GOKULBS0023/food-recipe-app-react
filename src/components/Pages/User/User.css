@@ -1,0 +1,87 @@
+.user__page {
+  display: flex;
+  width: 32vw;
+  min-height: 100vh;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  > form {
+    width: 100%;
+    display: grid;
+  }
+}
+.data {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  > input {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font: inherit;
+  }
+}
+.gender__data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  > div {
+    font: inherit;
+    display: flex;
+    align-items: center;
+    > input {
+      font: inherit;
+    }
+  }
+}
+.form__btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  >a {
+    >button {
+      padding: 0.5rem;
+    }
+  }
+  > button {
+    padding: 0.5rem;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .user__page {
+    width: 45vw;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .user__page {
+    width: 48vw;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .user__page {
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .user__page {
+    width: 60vw;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .user__page {
+    width: 70vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .user__page {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .user__page {
+    width: 95vw;
+  }
+}
